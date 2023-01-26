@@ -26,13 +26,13 @@ def sendGrades(EMAIL, PASSWORD, file, course_code):
         u_email = row[4]
         fName = row[2]
 
+        # Compose and send the email
         msg = EmailMessage()
         text = f"Dear {name},\n\nYour grade for the {course_code} 2nd CA is {grade}.\n\n *DISCLAIMER:This message is automated* \n\nBest regards!"
         msg.set_content(text)
         msg['Subject'] = f"{fName}\'s {course_code} CA 2 Grade"
         msg['From'] = EMAIL
         msg['To'] = u_email
-        # Compose and send the email
         
         server.send_message(msg)
 
